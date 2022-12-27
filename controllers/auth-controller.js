@@ -138,7 +138,7 @@ const doSingIn = async (req, res) => {
                 const token = jwt.sign({ userId: user.urId }, process.env.TOKEN_KEY, { expiresIn: maxAge })
 
                 res.cookie("commenter", token, {
-                    withCrdentials: true,
+                    
                     httpOnly: false,
                     maxAge: maxAge * 1000
                 })
