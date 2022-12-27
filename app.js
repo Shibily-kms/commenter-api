@@ -69,13 +69,17 @@ io.on('connection', (socket) => {
 //     next();
 //   });
 
-app.use(cors({
-    // origin: ['http://localhost:3000'],
-    origin: ['https://www.chat.bristlesweb.club/', 'https://chat.bristlesweb.club/'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Access']
-}))
+app.use(console.log('calling');)
+
+app.use(cors(
+//     {
+//     // origin: ['http://localhost:3000'],
+//     origin: ['https://www.chat.bristlesweb.club/', 'https://chat.bristlesweb.club/'],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     credentials: true,
+//     allowedHeaders: ['Content-Type', 'Access']
+// }
+))
 
 // Middlewares
 app.use(express.json())
