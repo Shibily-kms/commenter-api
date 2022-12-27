@@ -68,8 +68,7 @@ io.on('connection', (socket) => {
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //     next();
 //   });
-
-app.use(console.log('calling');)
+console.log('work app.js');
 
 app.use(cors(
 //     {
