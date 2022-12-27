@@ -15,6 +15,11 @@ const { errorHandler } = require('./middlewares/error-middleware')
 const userRouter = require('./routes/user')
 const adminRouter = require('./routes/admin')
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 const port = process.env.PORT || 5000;
 app.use(cors({
@@ -25,10 +30,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Access']
 }))
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
-});
+
 
 
 const io = socketIO(process.env.SOCKET_PORT, {
