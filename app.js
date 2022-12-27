@@ -6,6 +6,7 @@ app.use(cookieParser())
 const socketIO = require('socket.io');
 const dotenv = require('dotenv').config()
 const connectDB = require('./config/db')
+const port = process.env.PORT || 5000;
 
 connectDB()
 
@@ -15,20 +16,7 @@ const { errorHandler } = require('./middlewares/error-middleware')
 const userRouter = require('./routes/user')
 const adminRouter = require('./routes/admin')
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
 
-const port = process.env.PORT || 5000;
-app.use(cors({
-    // origin: ['http://localhost:3000'],
-    origin: ['https://www.chat.bristlesweb.club/', 'https://chat.bristlesweb.club/'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Access']
-}))
 
 
 
@@ -74,6 +62,20 @@ io.on('connection', (socket) => {
         io.emit('getUsers', users)
     })
 })
+
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//   });
+
+app.use(cors({
+    // origin: ['http://localhost:3000'],
+    origin: ['https://www.chat.bristlesweb.club/', 'https://chat.bristlesweb.club/'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Access']
+}))
 
 // Middlewares
 app.use(express.json())
