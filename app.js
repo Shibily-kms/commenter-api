@@ -18,7 +18,8 @@ const adminRouter = require('./routes/admin')
 
 const port = process.env.PORT || 5000;
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    // origin: ['http://localhost:3000'],
+    origin: ['https://www.chat.bristlesweb.club/','https://chat.bristlesweb.club/'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Access']
