@@ -4,7 +4,7 @@ const cors = require('cors')
 const app = express() // Initializing express
 app.use(cookieParser())
 const socketIO = require('socket.io');
-const dotenv = require('dotenv').config({ path: '.env' })
+const dotenv = require('dotenv').config()
 const connectDB = require('./config/db')
 
 connectDB()
