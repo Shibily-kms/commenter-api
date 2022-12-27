@@ -22,8 +22,14 @@ app.use(cors({
     origin: ['https://www.chat.bristlesweb.club/', 'https://chat.bristlesweb.club/'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Access-Control-Allow-Origin', 'Authorization', 'Access']
+    allowedHeaders: ['Content-Type', 'Access']
 }))
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+});
+
 
 const io = socketIO(process.env.SOCKET_PORT, {
     cors: {
