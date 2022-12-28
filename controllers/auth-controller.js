@@ -120,7 +120,7 @@ const setNewPassword = async (req, res, next) => {
 const doSingIn = async (req, res) => {
     try {
 
-     
+        console.log();
         let body = req.body
         const maxAge = 60 * 60 * 24;
 
@@ -137,11 +137,11 @@ const doSingIn = async (req, res) => {
                 delete user._doc.password
                 const token = jwt.sign({ userId: user.urId }, process.env.TOKEN_KEY, { expiresIn: maxAge })
 
-                res.cookie("commenter", token, {
-                    withCrdentials: true,
-                    httpOnly: false,
-                    maxAge: maxAge * 1000
-                })
+                // res.cookie("commenter", token, {
+                //     withCrdentials: true,
+                //     httpOnly: false,
+                //     maxAge: maxAge * 1000
+                // })
 
                 res.status(201).json({
                     user: user, token,
