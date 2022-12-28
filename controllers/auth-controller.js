@@ -198,14 +198,14 @@ const doAdminSignIn = (req, res, next) => {
             if (password == adminData.password) {
                 const token = jwt.sign({ email: adminData.email }, process.env.TOKEN_KEY, { expiresIn: maxAge })
 
-                res.cookie("commenterAdmin", token, {
-                    withCrdentials: true,
-                    httpOnly: false,
-                    maxAge: maxAge * 1000
-                })
+                // res.cookie("commenterAdmin", token, {
+                //     withCrdentials: true,
+                //     httpOnly: false,
+                //     maxAge: maxAge * 1000
+                // })
                 res.status(201).json({
                     status: true,
-                    success: true,
+                    success: true, token,
                     admin: adminData.emailId,
                     message: 'Authentication Completed'
                 })
