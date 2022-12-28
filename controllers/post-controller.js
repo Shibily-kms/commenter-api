@@ -290,7 +290,7 @@ const getHomePost = async (req, res, next) => {
     try {
         console.log('in home post');
         const urId = req.user.urId
-
+        console.log(urId);
         let otherPost = await UserModel.aggregate([
             {
                 $match: {

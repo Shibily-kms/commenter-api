@@ -71,13 +71,13 @@ io.on('connection', (socket) => {
 console.log('work app.js');
 
 app.use(cors(
-//     {
-//     // origin: ['http://localhost:3000'],
-//     origin: ['https://www.chat.bristlesweb.club/', 'https://chat.bristlesweb.club/'],
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     credentials: true,
-//     allowedHeaders: ['Content-Type', 'Access']
-// }
+    {
+    // origin: ['http://localhost:3000'],
+    origin: ['https://www.chat.bristlesweb.club/', 'https://chat.bristlesweb.club/'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Access']
+}
 ))
 
 // Middlewares

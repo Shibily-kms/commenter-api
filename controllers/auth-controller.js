@@ -120,25 +120,25 @@ const setNewPassword = async (req, res, next) => {
 const doSingIn = async (req, res) => {
     try {
 
-        console.log('1');
+     
         let body = req.body
         const maxAge = 60 * 60 * 24;
 
         let user = await UserModel.findOne({ $or: [{ userName: body.userName }, { emailId: body.userName }] })
 
         if (user) {
-            console.log('2');
+          
             if (user.status === "Blocked") {
                 return res.status(400).json({ status: false, message: 'This Account Blocked' })
             }
             let status = await bcrypt.compare(body.password, user.password);
             if (status) {
-                console.log('3');
+               
                 delete user._doc.password
                 const token = jwt.sign({ userId: user.urId }, process.env.TOKEN_KEY, { expiresIn: maxAge })
 
                 res.cookie("commenter", token, {
-                    
+                    withCrdentials: true,
                     httpOnly: false,
                     maxAge: maxAge * 1000
                 })
@@ -148,17 +148,17 @@ const doSingIn = async (req, res) => {
                     success: true, message: 'Sing In Completed'
                 })
             } else {
-                console.log('4');
+                
                 res.status(400).json({ error: true, message: 'Incurrect Password' })
             }
 
         } else {
-            console.log('5');
+           
             res.status(400).json({ error: true, message: "Invalid User name Or Email Id" })
         }
 
     } catch (error) {
-        console.log('6');
+      
         throw error;
     }
 }
