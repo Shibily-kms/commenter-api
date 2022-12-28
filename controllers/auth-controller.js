@@ -120,7 +120,7 @@ const setNewPassword = async (req, res, next) => {
 const doSingIn = async (req, res) => {
     try {
 
-        console.log();
+      
         let body = req.body
         const maxAge = 60 * 60 * 24;
 
@@ -137,11 +137,7 @@ const doSingIn = async (req, res) => {
                 delete user._doc.password
                 const token = jwt.sign({ userId: user.urId }, process.env.TOKEN_KEY, { expiresIn: maxAge })
 
-                // res.cookie("commenter", token, {
-                //     withCrdentials: true,
-                //     httpOnly: false,
-                //     maxAge: maxAge * 1000
-                // })
+            
 
                 res.status(201).json({
                     user: user, token,
@@ -198,11 +194,7 @@ const doAdminSignIn = (req, res, next) => {
             if (password == adminData.password) {
                 const token = jwt.sign({ email: adminData.email }, process.env.TOKEN_KEY, { expiresIn: maxAge })
 
-                // res.cookie("commenterAdmin", token, {
-                //     withCrdentials: true,
-                //     httpOnly: false,
-                //     maxAge: maxAge * 1000
-                // })
+          
                 res.status(201).json({
                     status: true,
                     success: true, token,
@@ -229,8 +221,8 @@ const doAdminSignIn = (req, res, next) => {
 }
 const checkAdminData = (req, res, next) => {
     try {
-
-        const jwtToken = jwt.verify(req.cookies.commenterAdmin, process.env.TOKEN_KEY)
+        const token = localStorage.getItem('adminToken')
+        const jwtToken = jwt.verify(token, process.env.TOKEN_KEY)
 
         if (jwtToken) {
 

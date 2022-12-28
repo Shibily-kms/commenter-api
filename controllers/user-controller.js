@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 
 const getUserList = async (req, res, next) => {
     try {
+     
         const userList = await UserModel.find()
 
         userList.forEach(object => {

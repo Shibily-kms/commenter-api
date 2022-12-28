@@ -17,10 +17,6 @@ const userRouter = require('./routes/user')
 const adminRouter = require('./routes/admin')
 
 
-
-
-
-
 const io = socketIO(process.env.SOCKET_PORT, {
     cors: {
         origin: 'http://localhost:3000',
@@ -63,22 +59,10 @@ io.on('connection', (socket) => {
     })
 })
 
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-//   });
+
 console.log('work app.js');
 
-app.use(cors(
-//     {
-//     origin: ['http://localhost:3000'],
-//     // origin: ['https://www.chat.bristlesweb.club/', 'https://chat.bristlesweb.club/'],
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     credentials: true,
-//     allowedHeaders: ['Content-Type', 'Access']
-// }
-))
+app.use(cors())
 
 // Middlewares
 app.use(express.json())

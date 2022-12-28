@@ -288,9 +288,9 @@ const deletePost = async (req, res, next) => {
 // Home Post
 const getHomePost = async (req, res, next) => {
     try {
-        console.log('in home post');
+      
         const urId = req.user.urId
-        console.log(urId);
+       
         let otherPost = await UserModel.aggregate([
             {
                 $match: {
@@ -393,7 +393,7 @@ const getHomePost = async (req, res, next) => {
         res.status(201).json({ success: true, posts: merge, message: 'get home post', })
 
     } catch (error) {
-        console.log('home post error',error);
+       
         throw error;
     }
 }
