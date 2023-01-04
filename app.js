@@ -13,10 +13,11 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server,{
     cors:{
-        origin: 'https://www.chat.bristlesweb.club/',
+        origin: 'https://www.chat.bristlesweb.club',
         // origin:"http://localhost:3000",
         methods:["GET","POST"],
-        allowedHeaders: ['Access-Control-Allow-Origin'],
+        secure: false,
+        changeOrigin: true
     }
 });
 
