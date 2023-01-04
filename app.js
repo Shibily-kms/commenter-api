@@ -16,7 +16,6 @@ const io = new Server(server,{
     cors:{
         origin: 'https://chat.bristlesweb.club/'
         // origin:"http://localhost:3000"
-       
     }
 });
 
