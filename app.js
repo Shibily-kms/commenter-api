@@ -2,7 +2,6 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const app = express() // Initializing express
-app.use(cookieParser())
 const dotenv = require('dotenv').config()
 const connectDB = require('./config/db')
 const port = process.env.PORT || 5000;
@@ -21,13 +20,12 @@ const io = new Server(server,{
 });
 
 console.log('working');
-console.log(io,'io');
 
 let users = []
 
 const addUser = (urId, socketId) => {
     !users.some(user => user.urId === urId) &&
-        users.push({ urId, socketId });
+    users.push({ urId, socketId });
 }
 
 const removeUser = (socketId) => {
@@ -73,6 +71,7 @@ const adminRouter = require('./routes/admin')
 
 app.use(cors())
 
+app.use(cookieParser())
 // Middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
