@@ -20,6 +20,7 @@ const io = new Server(server,{
     }
 });
 
+console.log('working');
 console.log(io,'io');
 
 let users = []
