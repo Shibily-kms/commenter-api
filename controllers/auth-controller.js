@@ -137,8 +137,6 @@ const doSingIn = async (req, res) => {
                 delete user._doc.password
                 const token = jwt.sign({ userId: user.urId }, process.env.TOKEN_KEY, { expiresIn: maxAge })
 
-            
-
                 res.status(201).json({
                     user: user, token,
                     success: true, message: 'Sing In Completed'

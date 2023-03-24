@@ -13,15 +13,14 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server,{
     cors:{
-        origin: 'https://www.chat.bristlesweb.club',
-        // origin:"http://localhost:3000",
+        // origin: 'https://www.chat.bristlesweb.club',
+        origin:"http://localhost:3000",
         methods:["GET","POST"],
         secure: false,
         changeOrigin: true
     }
 });
 
-console.log('working');
 
 let users = []
 
@@ -37,6 +36,7 @@ const removeUser = (socketId) => {
 const getUser = (id) => {
     return users.find(user => user.urId === id)
 }
+
 
 io.on('connection', (socket) => {
     console.log(' connection');
