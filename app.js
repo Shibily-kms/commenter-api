@@ -2,7 +2,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const app = express() // Initializing express
-const dotenv = require('dotenv').config()
+const dotenv = require('dotenv').config()  
 const connectDB = require('./config/db')
 const port = process.env.PORT || 5000;
 
